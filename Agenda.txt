@@ -1,1 +1,2 @@
-1 | Julia Sophie | 4321
+0 | Thiago Ribeiro | 1234
+1 | Nenem Gorda | 6543
