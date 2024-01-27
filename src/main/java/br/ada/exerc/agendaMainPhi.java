@@ -16,7 +16,6 @@
 // * * Criação das funções do código.
 
 // * Importação de classes necessárias pra execução do código * //
-package main.java.br.ada.exerc;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
