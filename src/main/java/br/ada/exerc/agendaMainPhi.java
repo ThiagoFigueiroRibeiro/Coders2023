@@ -122,6 +122,7 @@ public class agendaMainPhi {
                         editarContato(contatos);
                         break;
                     case 4:
+                        scan.close();
                         sair(contatos);
                         break;
                     default:
