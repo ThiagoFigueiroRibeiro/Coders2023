@@ -16,6 +16,7 @@
 // * * Criação das funções do código.
 
 // * Importação de classes necessárias pra execução do código * //
+
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -89,6 +90,7 @@ public class agendaMainPhi {
         public static void printAllContacts(List<Contato> contatos) {
             System.out.println();
             System.out.println(">>>> Contatos <<<<");
+            System.out.println("Id | Nome e Sobrenome | Telefone" );
             for (Contato contato : contatos) {
                 contato.printContato();
             }
@@ -120,7 +122,6 @@ public class agendaMainPhi {
                         editarContato(contatos);
                         break;
                     case 4:
-                        scan.close();
                         sair(contatos);
                         break;
                     default:
@@ -221,6 +222,7 @@ public class agendaMainPhi {
 
     static void sair(List<Contato> contatos) throws FileNotFoundException {
         PrintWriter out = new PrintWriter("agenda.txt");
+        out.println("Id | Nome e Sobrenome | Telefone" );
         for (Contato contato : contatos) {
             out.println(contato.getId() + " | " + contato.getNome() + " " + contato.getSobrenome() + " | " + contato.getTelefone());
         }
