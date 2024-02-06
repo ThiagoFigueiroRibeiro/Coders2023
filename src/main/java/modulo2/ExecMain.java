@@ -123,6 +123,8 @@ public class ExecMain {
         }
 
         void menu(){
+            //System.out.printf("%-30sLista de Contatos%-30s\n\n","","");
+            //System.out.printf("1 - Play %-30sLista de Contatos%-30s\n\n","","");
             //System.out.println("0 - Status do sistema");
             //showStatus();
             System.out.println("1 - Play");
@@ -154,6 +156,7 @@ public class ExecMain {
         while (true){
             Scanner scan = new Scanner(System.in);
             beatbox.menu();
+
             System.out.print("Digite a sua escolha: ");
             try {
                 Integer escolha = scan.nextInt();
@@ -181,7 +184,7 @@ public class ExecMain {
                     Integer newVolume = scan.nextInt();
                     beatbox.aumentaVolume(newVolume);
                 } else if (escolha == 8) {
-                    System.out.print("Quanto de volume você quer aumentar? ");
+                    System.out.print("Quanto de volume você quer abaixar? ");
                     Integer newVolume = scan.nextInt();
                     beatbox.abaixaVolume(newVolume);
                 } else if (escolha == 9) {
