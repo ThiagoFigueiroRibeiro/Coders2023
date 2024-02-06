@@ -1,5 +1,7 @@
 package main.java.modulo2;
 
+import java.util.Scanner;
+
 public class ExecMain {
     static class Disco{
         final String NOME;
@@ -96,6 +98,7 @@ public class ExecMain {
                 if (CAIXA_DE_DISCOS[i] != null) {
                     System.out.println("Tocando o cd: " + CAIXA_DE_DISCOS[i].NOME + ", faixa " + faixaAtual);
                     estaTocando = true;
+                    break;
                 } else {
                     System.out.println("Você precisa de um CD dentro do tocador.");
                     break;
@@ -111,42 +114,84 @@ public class ExecMain {
         static void stop(){
             estaTocando = false;
             faixaAtual = 1;
-            cdAtual = 1;
+            cdAtual = 0;
         }
         void showStatus(){
             System.out.println("O tocador está tocando? " + estaTocando);
             System.out.println("Qual album ele está tocando? " + CAIXA_DE_DISCOS[cdAtual].NOME);
             System.out.println("Qual faixa ele está tocando? " + faixaAtual);
         }
+
+        void menu(){
+            //System.out.println("0 - Status do sistema");
+            //showStatus();
+            System.out.println("1 - Play");
+            System.out.println("2 - Avançar faixa");
+            System.out.println("3 - Voltar faixa");
+            System.out.println("4 - Trocar de CD e faixa");
+            System.out.println("5 - Pausar Player");
+            System.out.println("6 - Parar Player");
+            System.out.println("7 - Aumentar volume");
+            System.out.println("8 - Diminuir volume");
+            System.out.println("9 - Status do player");
+        }
     }
 
     public static void main(String[] args) {
+
         Disco mamonas = new Disco("Mamonas Assassinas", 10);
         Disco metal = new Disco("Massacration", 7);
-        Disco nightwish = new Disco("Nightwish", 12);
-        Disco lana = new Disco("Lana Del Rey", 9);
+        //Disco nightwish = new Disco("Nightwish", 12);
+        //Disco lana = new Disco("Lana Del Rey", 9);
 
         Tocador beatbox = new Tocador();
-        beatbox.verificarCaixaDeDiscos();
-        beatbox.play();
 
         beatbox.incluirCD(mamonas);
         beatbox.incluirCD(metal);
-        beatbox.incluirCD(nightwish);
-        beatbox.incluirCD(lana);
-        beatbox.verificarCaixaDeDiscos();
+        //beatbox.incluirCD(nightwish);
 
-        //beatbox.verificarVolume();
-        //beatbox.aumentaVolume(15);
-        //beatbox.aumentaVolume(150);
-        //beatbox.abaixaVolume(50);
-        //beatbox.abaixaVolume(100);
-        //beatbox.verificarVolume();
 
-        beatbox.tocarFaixa(1,2);
-        //beatbox.avancarFaixa();
-        beatbox.voltarFaixa();
-        beatbox.showStatus();
+        while (true){
+            Scanner scan = new Scanner(System.in);
+            beatbox.menu();
+            System.out.print("Digite a sua escolha: ");
+            try {
+                Integer escolha = scan.nextInt();
+                if (escolha == 0) {
+                    beatbox.showStatus();
+                } else if (escolha == 1) {
+                    beatbox.play();
+                } else if (escolha == 2) {
+                    beatbox.avancarFaixa();
+                } else if (escolha == 3) {
+                    beatbox.voltarFaixa();
+                } else if (escolha == 4) {
+                    beatbox.verificarCaixaDeDiscos();
+                    System.out.print("Qual CD você quer escutar? ");
+                    Integer cd = scan.nextInt();
+                    System.out.print("Qual faixa desse cd você quer escutar? ");
+                    Integer faixa = scan.nextInt();
+                    beatbox.tocarFaixa(cd, faixa);
+                } else if (escolha == 5) {
+                    beatbox.pause();
+                } else if (escolha == 6) {
+                    beatbox.stop();
+                } else if (escolha == 7) {
+                    System.out.print("Quanto de volume você quer aumentar? ");
+                    Integer newVolume = scan.nextInt();
+                    beatbox.aumentaVolume(newVolume);
+                } else if (escolha == 8) {
+                    System.out.print("Quanto de volume você quer aumentar? ");
+                    Integer newVolume = scan.nextInt();
+                    beatbox.abaixaVolume(newVolume);
+                } else if (escolha == 9) {
+                    beatbox.showStatus();
+                } else {
+                    System.out.println("Você digitou um numero fora das opções.");
+                }
+            }catch(Exception e){System.out.println("Por favor digite uma das opções acima.");}
+            }
+        }
     }
 
-}
+
