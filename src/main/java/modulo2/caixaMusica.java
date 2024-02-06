@@ -25,6 +25,7 @@ public class caixaMusica {
     public void ligar(){
         System.out.println("Ligando " + marca + " " + modelo);
     }
+
     public void tocarCDs(){
         if (tocaCDs){System.out.println("Tocando CDs...");}
         else {System.out.println("Esse modelo não permite tocar CDs");}
